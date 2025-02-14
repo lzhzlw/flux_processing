@@ -1,0 +1,43 @@
+# Project: camp2ascii
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = camp2ascii.o files.o frame_read.o generic_functions.o initializations.o types_processing.o
+LINKOBJ  = camp2ascii.o files.o frame_read.o generic_functions.o initializations.o types_processing.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = camp2ascii.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+camp2ascii.o: camp2ascii.c
+	$(CC) -c camp2ascii.c -o camp2ascii.o $(CFLAGS)
+
+files.o: files.c
+	$(CC) -c files.c -o files.o $(CFLAGS)
+
+frame_read.o: frame_read.c
+	$(CC) -c frame_read.c -o frame_read.o $(CFLAGS)
+
+generic_functions.o: generic_functions.c
+	$(CC) -c generic_functions.c -o generic_functions.o $(CFLAGS)
+
+initializations.o: initializations.c
+	$(CC) -c initializations.c -o initializations.o $(CFLAGS)
+
+types_processing.o: types_processing.c
+	$(CC) -c types_processing.c -o types_processing.o $(CFLAGS)
